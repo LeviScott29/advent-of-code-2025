@@ -4277,18 +4277,16 @@ for x in range(100):
 
 dial_position = dial.index(50)
 
-with open("day1_check.py", "w") as f:
-    for direction, value in moves:
-        if direction == "R":
-            dial_position = (dial_position + value) % 100
-            print("right: ", value, dial_position, file=f)
-            if dial[dial_position] == 0:
-                counter += 1
-        else:  # direction == "L"
-            dial_position = (dial_position - value) % 100
-            print("left: ", value, dial_position, file=f)
-            if dial[dial_position] == 0:
-                counter += 1
+
+for direction, value in moves:
+    if direction == "R":
+        dial_position = (dial_position + value) % 100
+        if dial[dial_position] == 0:
+            counter += 1
+    else:  # direction == "L"
+        dial_position = (dial_position - value) % 100
+        if dial[dial_position] == 0:
+            counter += 1
 print("counter:", counter)
 
 
